@@ -1,19 +1,20 @@
 var express = require("express");
 var app = express();
-var { usuarios } = require("./models");
+var { usuario } = require("./models");
 
 app.use(express.json());
 app.use(express.urlencoded({
   extended: true
 }))
 
-app.get("/", function(req, res){
-  res.send("olá mundo")
-});
+app.get("/", async function(req, res){
+  var resultado = await usuario.findAll();
+  res.json(resultado);
+})
 
 app.post("/", async function(req, res){
-  var resultados = usuario.create(req.body);
-  res.json(resultados);
+  var resultado = usuario.create(req.body);
+  res.json(resultado);
 });
 
 app.listen(3000, function(){
