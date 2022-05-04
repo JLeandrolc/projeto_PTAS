@@ -12,6 +12,11 @@ app.get("/", async function(req, res){
   res.json(resultado);
 });
 
+app.get("/:id", async function (req, res){
+  var resultado = await usuario.findByPk(req.params.id);
+  res.json(resultado);
+});
+
 app.post("/", async function(req, res){
   var resultado = usuario.create(req.body);
   res.json(resultado);
