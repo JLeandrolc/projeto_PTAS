@@ -1,6 +1,7 @@
 var express = require("express");
 var app = express();
 var { usuario } = require("./models");
+var { empresa } = require("./models");
 
 app.use(express.json());
 app.use(express.urlencoded({
